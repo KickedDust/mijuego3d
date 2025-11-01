@@ -1,0 +1,107 @@
+%PDF-1.4
+%
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+3 0 obj
+<< /Length 3673 >>
+stream
+BT /F2 20.00 Tf 1 0 0 1 72.00 696.00 Tm (Informe del proyecto MiJuego3D) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 72.00 660.00 Tm (Explicacin del cdigo ms relevante) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 72.00 629.00 Tm (Escena principal \(`game.tscn`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 608.00 Tm (- El nodo `Game` instancia el escenario base, agrupa monedas y enemigos, y coloca) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 593.00 Tm (al jugador con transformaciones predeterminadas para el recorrido. Esto) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 578.00 Tm (centraliza la configuracin del nivel desde un nico recurso de escena.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 557.00 Tm (- Las monedas se agrupan bajo el nodo `Coins`, lo que facilita su administracin) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 542.00 Tm (masiva y el uso de posiciones predefinidas para el recolector. De forma similar,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 527.00 Tm (el nodo `Enemies` rene a los robots hostiles y reutiliza la misma escena) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 512.00 Tm (instanciada varias veces.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 72.00 483.00 Tm (Control del jugador \(`player/player.gd`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 462.00 Tm (- La clase `Player` extiende `CharacterBody3D` y gestiona movimientos, saltos,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 447.00 Tm (disparos y animaciones con parmetros configurables como velocidades mximas,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 432.00 Tm (aceleraciones y mezcla de animaciones.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 411.00 Tm (- El mtodo `_physics_process\(\)` normaliza la entrada respecto a la cmara,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 396.00 Tm (actualiza la velocidad en los ejes horizontal y vertical, aplica gravedad y) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 381.00 Tm (controla la rotacin del modelo mediante `adjust_facing\(\)` para mantener la) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 366.00 Tm (orientacin alineada con el desplazamiento.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 345.00 Tm (- El script sincroniza las animaciones con la velocidad \(`run`, `speed`, `state`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 330.00 Tm (y controla el disparo de balas instanciando `Bullet` con velocidad inicial y) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 315.00 Tm (sonido.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 72.00 286.00 Tm (Cmara de seguimiento \(`player/follow_camera.gd`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 265.00 Tm (- La cmara se desacopla del padre con `set_as_top_level\(true\)` y cada cuadro) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 250.00 Tm (calcula una posicin objetivo basada en la distancia, altura y lneas de visin) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 235.00 Tm (respecto al jugador.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 214.00 Tm (- Implementa un sistema de auto-giro mediante tres raycasts \(`centro`,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 199.00 Tm (`izquierda`, `derecha`\) para recolocar la cmara cuando detecta obstculos,) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 184.00 Tm (evitando intersecciones con el escenario y manteniendo al jugador visible.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 72.00 155.00 Tm (Comportamiento del enemigo \(`enemy/enemy.gd`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 134.00 Tm (- Cada enemigo es un `RigidBody3D` que acelera hacia adelante cuando el rayo) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 119.00 Tm (frontal detecta suelo y no detecta pared. Si pierde el suelo, inicia un giro) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 104.00 Tm (gradual controlado por `ROT_SPEED` hasta encontrar de nuevo un camino libre.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 83.00 Tm (- El mtodo `_integrate_forces\(\)` evala colisiones por contacto: al recibir el) Tj ET
+endstream
+endobj
+4 0 obj
+<< /Length 3452 >>
+stream
+BT /F1 11.00 Tf 1 0 0 1 96.00 705.00 Tm (impacto de una `Bullet` habilitada, desactiva sus bloqueos angulares, reproduce) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 690.00 Tm (animaciones y sonidos de explosin y finalmente se elimina mediante `_die\(\)`.) Tj ET
+BT /F2 13.00 Tf 1 0 0 1 72.00 661.00 Tm (Monedas \(`coin/coin.gd`\) y proyectiles \(`player/bullet/bullet.gd`\)) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 640.00 Tm (- Las monedas son `Area3D` que, al detectar el cuerpo del jugador, reproducen la) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 625.00 Tm (animacin `take`, incrementan la cuenta de monedas y marcan `taken` para evitar) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 610.00 Tm (mltiples activaciones.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 84.00 589.00 Tm (- Las balas son `RigidBody3D` sencillos con una marca `enabled` que permite a los) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 96.00 574.00 Tm (enemigos invalidarlas tras un impacto exitoso.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 72.00 542.00 Tm (Problemas encontrados y soluciones aplicadas) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 513.00 Tm (1. **Control de cadas del jugador:** se necesitaba evitar que el personaje quedara fuera) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 498.00 Tm (del nivel tras caer. El mtodo `_physics_process\(\)` detecta si la posicin vertical es) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 483.00 Tm (menor que `-12` o si el usuario presiona `reset_position`, restableciendo la posicin) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 468.00 Tm (inicial y la velocidad a cero. 2. **Prevencin de doble conteo de monedas:** las) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 453.00 Tm (colisiones mltiples con la misma moneda podran incrementar el contador de forma) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 438.00 Tm (indebida. La solucin fue incorporar la marca booleana `taken` en el `Area3D` de cada) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 423.00 Tm (moneda para asegurarse de que solo se incremente la primera vez. 3. **Reaccin a disparos) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 408.00 Tm (enemigos:** los robots necesitaban retroalimentacin y destruccin al recibir proyectiles.) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 393.00 Tm (Se implement una validacin de contactos en `_integrate_forces\(\)` que revisa si el objeto) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 378.00 Tm (es una `Bullet` activa, reproduce animaciones y sonidos de impacto, libera los bloqueos) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 363.00 Tm (angulares y marca la bala como no vlida. 4. **Visibilidad constante del jugador:** la) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 348.00 Tm (cmara deba evitar obstculos que taparan al personaje. El script de la cmara lanza tres) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 333.00 Tm (raycasts y ajusta la posicin o rota automticamente cuando detecta colisiones laterales o) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 318.00 Tm (frontales.) Tj ET
+BT /F2 16.00 Tf 1 0 0 1 72.00 284.00 Tm (Conclusiones) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 255.00 Tm (El proyecto se organiza en escenas reutilizables y scripts que resuelven los principales) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 240.00 Tm (retos de un juego de plataformas 3D: control responsivo del personaje, retroalimentacin) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 225.00 Tm (audiovisual, coleccionables robustos y una cmara inteligente. Las soluciones descritas) Tj ET
+BT /F1 11.00 Tf 1 0 0 1 72.00 210.00 Tm (aseguran que la experiencia de juego se mantenga fluida y libre de errores comunes.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 7 0 R /MediaBox [0 0 612 792] /Contents 3 0 R /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 7 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 1 0 R /F2 2 0 R >> >> >>
+endobj
+7 0 obj
+<< /Type /Pages /Kids [5 0 R 6 0 R] /Count 2 >>
+endobj
+8 0 obj
+<< /Type /Catalog /Pages 7 0 R >>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000000160 00000 n 
+0000003885 00000 n 
+0000007389 00000 n 
+0000007525 00000 n 
+0000007661 00000 n 
+0000007724 00000 n 
+trailer
+<< /Size 9 /Root 8 0 R >>
+startxref
+7773
+%%EOF
