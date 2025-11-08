@@ -1,5 +1,4 @@
 extends Node
-class_name SaveManager
 
 signal save_state_changed
 

@@ -3,19 +3,25 @@ class_name Game
 
 const GAME_SCENE_PATH := "res://game.tscn"
 const MENU_SCENE_PATH := "res://MainMenu.tscn"
+const SAVE_MANAGER_PATH := "/root/SaveManager"
 
 @onready var player: Player = $Player
 @onready var coins_root: Node = $Coins
 @onready var pause_menu: MainMenu = $UI/PauseMenu
 
+var _save_manager: Node = null
+
 func _ready() -> void:
     add_to_group("game_controller")
+    _save_manager = get_node_or_null(SAVE_MANAGER_PATH)
+    if _save_manager == null:
+        push_error("[Game] No se encontró el autoload SaveManager en %s." % SAVE_MANAGER_PATH)
     if pause_menu:
         pause_menu.pause_mode = true
         pause_menu.set_game(self)
         pause_menu.visible = false
         pause_menu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-    if SaveManager.consume_pending_load():
+    if _save_manager_has_method("consume_pending_load") and _save_manager.consume_pending_load():
         _load_saved_game()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -42,17 +48,22 @@ func resume_game() -> void:
         pause_menu.hide()
 
 func save_game() -> bool:
+    if not _save_manager_has_method("save_game_state"):
+        push_warning("[Game] No se pudo guardar porque falta SaveManager.")
+        return false
     var data := _build_save_data()
-    return SaveManager.save_game_state(data)
+    return _save_manager.save_game_state(data)
 
 func start_new_game() -> void:
     get_tree().paused = false
-    SaveManager.request_new_game()
+    if _save_manager_has_method("request_new_game"):
+        _save_manager.request_new_game()
     get_tree().change_scene_to_file(GAME_SCENE_PATH)
 
 func exit_to_main_menu() -> void:
     get_tree().paused = false
-    SaveManager.request_new_game()
+    if _save_manager_has_method("request_new_game"):
+        _save_manager.request_new_game()
     get_tree().change_scene_to_file(MENU_SCENE_PATH)
 
 func _build_save_data() -> Dictionary:
@@ -71,7 +82,10 @@ func _build_save_data() -> Dictionary:
     }
 
 func _load_saved_game() -> void:
-    var data := SaveManager.load_game_state()
+    if not _save_manager_has_method("load_game_state"):
+        push_warning("[Game] No se pudo cargar la partida porque falta SaveManager.")
+        return
+    var data := _save_manager.load_game_state()
     if data.is_empty():
         return
     if data.has("player"):
@@ -92,3 +106,6 @@ func _load_saved_game() -> void:
 func _notification(what: int) -> void:
     if what == NOTIFICATION_PREDELETE:
         remove_from_group("game_controller")
+
+func _save_manager_has_method(method_name: StringName) -> bool:
+    return _save_manager != null and _save_manager.has_method(method_name)
