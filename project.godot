@@ -14,9 +14,13 @@ config/name="Platformer 3D"
 config/description="Platformer 3D demo using a CharacterBody3D.
 It uses similar code to the 2D platformer, but implemented in 3D."
 config/tags=PackedStringArray("3d", "demo", "gridmap", "official", "physics")
-run/main_scene="res://game.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.webp"
+
+[autoload]
+
+SaveManager="*res://save_manager.gd"
 
 [input]
 
