@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://f0k0uxmtfem6"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_jmcnn"]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_jmcnn")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.070588, 0.070588, 0.070588, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(360, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+alignment = 1
+custom_minimum_size = Vector2(0, 320)
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Menú Principal"
+horizontal_alignment = 1
+vertical_alignment = 1
+size_flags_vertical = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+size_flags_vertical = 1
+
+[node name="NewGameButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Nueva Partida"
+size_flags_horizontal = 4
+
+[node name="LoadGameButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Cargar Partida"
+size_flags_horizontal = 4
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Opciones"
+size_flags_horizontal = 4
+
+[node name="ExitButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Salir"
+size_flags_horizontal = 4
+
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
