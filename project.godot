@@ -18,6 +18,10 @@ run/main_scene="res://MainMenu.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.webp"
 
+[autoload]
+
+SaveManager="*res://save_manager.gd"
+
 [input]
 
 ui_accept={

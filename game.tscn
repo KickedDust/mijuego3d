@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0lrpf3mmjdsx"]
+[gd_scene load_steps=11 format=3 uid="uid://d0lrpf3mmjdsx"]
 
 [ext_resource type="PackedScene" uid="uid://dohp772jyjxb7" path="res://stage/stage.tscn" id="1_ybvw5"]
 [ext_resource type="PackedScene" uid="uid://dfxo2jwbj4aeh" path="res://coin/coin.tscn" id="2_chew2"]
 [ext_resource type="PackedScene" uid="uid://o5q0hy6cg6nt" path="res://enemy/enemy.tscn" id="3_nhwvs"]
 [ext_resource type="PackedScene" uid="uid://cc4idhykjp5f5" path="res://player/player.tscn" id="4_ray4s"]
+[ext_resource type="Script" path="res://game.gd" id="5_ucgnt"]
+[ext_resource type="PackedScene" path="res://MainMenu.tscn" id="6_n026e"]
 
 [sub_resource type="PhysicsMaterial" id="1"]
 friction = 0.0
@@ -18,6 +20,7 @@ friction = 0.0
 friction = 0.0
 
 [node name="Game" type="Node3D"]
+script = ExtResource("5_ucgnt")
 
 [node name="Stage" parent="." instance=ExtResource("1_ybvw5")]
 
@@ -264,3 +267,9 @@ physics_material_override = SubResource("4")
 
 [node name="Player" parent="." instance=ExtResource("4_ray4s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.49833, -3.84189, 3.9334)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("6_n026e")]
+pause_mode = true
+visible = false

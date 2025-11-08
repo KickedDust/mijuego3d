@@ -41,23 +41,23 @@ size_flags_vertical = 1
 custom_minimum_size = Vector2(0, 24)
 size_flags_vertical = 1
 
+[node name="ContinueButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Continuar"
+size_flags_horizontal = 4
+
+[node name="SaveButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
+text = "Guardar"
+size_flags_horizontal = 4
+
 [node name="NewGameButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
-text = "Nueva Partida"
-size_flags_horizontal = 4
-
-[node name="LoadGameButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
-text = "Cargar Partida"
-size_flags_horizontal = 4
-
-[node name="OptionsButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
-text = "Opciones"
+text = "Nuevo Juego"
 size_flags_horizontal = 4
 
 [node name="ExitButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer"]
 text = "Salir"
 size_flags_horizontal = 4
 
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
